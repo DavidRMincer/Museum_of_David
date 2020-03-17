@@ -14,13 +14,17 @@ public class Pointer_Script : MonoBehaviour
 
         Physics.Raycast(transform.position, transform.forward, out hit, rayDist);
 
-        handImg.enabled = (hit.collider.CompareTag("Interactable") &&
-            hit.collider.GetComponent<Interactable_Script>().canInteract);
+        handImg.enabled = (hit.collider &&(hit.collider.CompareTag("Interactable") &&
+            hit.collider.GetComponent<Interactable_Script>().canInteract));
 
-        if (hit.collider.CompareTag("Interactable") &&
-            hit.collider.GetComponent<Interactable_Script>().canInteract)
+        if (hit.collider &&
+            (hit.collider.CompareTag("Interactable") &&
+            hit.collider.GetComponent<Interactable_Script>().canInteract))
         {
-
+            if (Input.GetButtonDown("Fire1"))
+            {
+                hit.collider.GetComponent<Interactable_Script>().Interact();
+            }
         }
     }
 }

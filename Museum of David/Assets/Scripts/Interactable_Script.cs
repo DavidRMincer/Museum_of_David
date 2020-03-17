@@ -5,8 +5,11 @@ using UnityEngine;
 public class Interactable_Script : MonoBehaviour
 {
     public bool canInteract = true;
-    public GameObject[] deactivate;
+    public GameObject[] deactivate,
+        changeObjMats;
+    public IslandAnimation_Script islandManager;
     public ParticleSystem[] particles;
+    public Material[] newMats;
 
     public void Interact()
     {
@@ -19,10 +22,34 @@ public class Interactable_Script : MonoBehaviour
                 item.Play();
             }
 
+            StartCoroutine(islandManager.Play());
+
+            for (int i = 0; i < changeObjMats.Length; ++i)
+            {
+                StartCoroutine(ChangeMat(i));
+            }
+
             foreach (var item in deactivate)
             {
                 item.SetActive(false);
             }
         }
+    }
+
+    public IEnumerator ChangeMat(int index)
+    {
+        float counter = 0f;
+        Material startMat = changeObjMats[index].GetComponent<MeshRenderer>().materials[0];
+
+        do
+        {
+            counter = (counter >= 1) ? 1 : counter + Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+
+            Material newMat = new Material(startMat);
+            newMat.Lerp(startMat, newMats[index], counter / 1);
+
+            changeObjMats[index].GetComponent<MeshRenderer>().materials[0].Lerp(startMat, newMats[index], counter / 1);
+        } while (counter >= 1);
     }
 }
