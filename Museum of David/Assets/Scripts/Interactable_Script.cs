@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class Interactable_Script : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Interactable_Script : MonoBehaviour
     public IslandAnimation_Script islandManager;
     public ParticleSystem[] particles;
     public Material[] newMats;
+    public Interactable_Script[] interactables;
+    public Fungus.Flowchart flowchart;
 
     public void Interact()
     {
@@ -22,11 +25,24 @@ public class Interactable_Script : MonoBehaviour
                 item.Play();
             }
 
-            StartCoroutine(islandManager.Play());
+            if (islandManager)
+            {
+                StartCoroutine(islandManager.Play());
+            }
 
             for (int i = 0; i < changeObjMats.Length; ++i)
             {
                 StartCoroutine(ChangeMat(i));
+            }
+
+            foreach (var item in interactables)
+            {
+                item.canInteract = true;
+            }
+
+            if (flowchart)
+            {
+                flowchart.ExecuteBlock("Introduction");
             }
 
             foreach (var item in deactivate)
