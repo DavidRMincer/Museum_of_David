@@ -5,7 +5,8 @@ using UnityEngine;
 public class IslandAnimation_Script : MonoBehaviour
 {
     public AnimationCurve raiseCurve;
-    public float duration;
+    public float duration,
+        startOffset;
 
     private Vector3 newPosition,
         startPos;
@@ -14,7 +15,7 @@ public class IslandAnimation_Script : MonoBehaviour
     {
         newPosition = transform.position;
 
-        transform.position = transform.position - (Vector3.up * 10);
+        transform.position = transform.position - (Vector3.up * startOffset);
 
         startPos = transform.position;
     }
