@@ -13,6 +13,7 @@ public class Interactable_Script : MonoBehaviour
     public Material[] newMats;
     public Interactable_Script[] interactables;
     public Fungus.Flowchart flowchart;
+    public string fungusBlock;
 
     public void Interact()
     {
@@ -42,7 +43,7 @@ public class Interactable_Script : MonoBehaviour
 
             if (flowchart)
             {
-                flowchart.ExecuteBlock("Introduction");
+                flowchart.ExecuteBlock(fungusBlock);
             }
 
             foreach (var item in deactivate)
