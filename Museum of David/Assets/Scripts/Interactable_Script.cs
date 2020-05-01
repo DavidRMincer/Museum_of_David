@@ -12,6 +12,7 @@ public class Interactable_Script : MonoBehaviour
     public ParticleSystem[] particles;
     public Material[] newMats;
     public Interactable_Script[] interactables;
+    public AudioSource audioSource;
     public Fungus.Flowchart flowchart;
     public string fungusBlock;
 
@@ -20,6 +21,8 @@ public class Interactable_Script : MonoBehaviour
         if (canInteract)
         {
             canInteract = false;
+
+            audioSource.Play();
 
             foreach (var item in particles)
             {

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Pointer_Script : MonoBehaviour
 {
     public float rayDist;
-    public Image handImg;
+    public Image handImg,
+        pointer;
 
     private void LateUpdate()
     {
@@ -26,5 +27,16 @@ public class Pointer_Script : MonoBehaviour
                 hit.collider.GetComponent<Interactable_Script>().Interact();
             }
         }
+    }
+
+    public void SetPointerVisibility(bool visible)
+    {
+        pointer.gameObject.SetActive(visible);
+    }
+
+    public void SetCursourVisibility(bool visible)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = (visible) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

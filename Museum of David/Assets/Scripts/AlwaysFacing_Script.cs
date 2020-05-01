@@ -6,6 +6,14 @@ public class AlwaysFacing_Script : MonoBehaviour
 {
     public GameObject player;
 
+    private void Start()
+    {
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+    }
+
     private void LateUpdate()
     {
         Vector3 direction = transform.position - player.transform.position;
