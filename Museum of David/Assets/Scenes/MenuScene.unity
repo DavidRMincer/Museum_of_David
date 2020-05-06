@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 717783413}
   - component: {fileID: 717783412}
   - component: {fileID: 717783411}
+  - component: {fileID: 717783414}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -681,6 +682,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &717783414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717783410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7565055f8f35a441a2a191d1f80977f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDist: 0
+  handImg: {fileID: 0}
+  pointer: {fileID: 0}
 --- !u!1 &1323568554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1637,9 @@ GameObject:
   - component: {fileID: 1930717044}
   - component: {fileID: 1930717043}
   - component: {fileID: 1930717042}
+  - component: {fileID: 1930717045}
+  - component: {fileID: 1930717046}
+  - component: {fileID: 1930717047}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1667,17 +1686,20 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1930717016}
   commandList:
+  - {fileID: 1930717046}
   - {fileID: 1930717026}
   - {fileID: 1930717025}
   - {fileID: 1930717024}
   - {fileID: 1930717023}
   - {fileID: 1930717022}
+  - {fileID: 1930717045}
   - {fileID: 1930717021}
   - {fileID: 1930717020}
   - {fileID: 1930717044}
   - {fileID: 1930717029}
   - {fileID: 1930717028}
   - {fileID: 1930717027}
+  - {fileID: 1930717047}
 --- !u!114 &1930717018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,8 +1724,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1930717035}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
@@ -2337,7 +2358,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: MainScene
+    stringVal: StartingScene
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &1930717042
@@ -2403,6 +2424,88 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &1930717045
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930717015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 26
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 66d102b32e5ce0142b7ec1228144ab48, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
+--- !u!114 &1930717046
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930717015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 27
+  indentLevel: 0
+  duration: 0
+  targetAlpha: 0
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+--- !u!114 &1930717047
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930717015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 28
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 717783410}
+  targetComponentAssemblyName: Pointer_Script, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Pointer_Script
+  targetMethod: SetCursourVisibility
+  targetMethodText: 'SetCursourVisibility (Boolean): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Boolean
+      intValue: 0
+      boolValue: 1
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &2087531186
 GameObject:
   m_ObjectHideFlags: 0
